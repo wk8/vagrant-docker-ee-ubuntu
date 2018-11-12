@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 export UCP_IPADDR=$(cat /vagrant/env/ucp-node1-ipaddr)
 export UCP_USERNAME=$(cat /vagrant/env/ucp_username)
 export UCP_PASSWORD=$(cat /vagrant/env/ucp_password)
@@ -64,7 +66,7 @@ docker pull wordpress
 docker pull mariadb
 # build custom images
 git clone https://github.com/david-yu/leroy-jenkins.git
-docker build -t leroy-jenkins /home/vagrant/leroy-jenkins/
+docker build -t leroy-jenkins /home/vagrant/leroy-jenkins/jenkins/
 # tag images
 docker tag mongo ${DTR_FQDN}/engineering/mongo:latest
 docker tag wordpress ${DTR_FQDN}/engineering/wordpress:latest
